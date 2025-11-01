@@ -1,0 +1,89 @@
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин Карина - Главная</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+<body>
+<!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <!-- Верхняя строка с контактами -->
+            <div class="header-top">
+                <div class="contact-info">
+                    <span>г. Москва, ул. Примерная, д. 123</span>
+                    <span>+7 (495) 123-45-67</span>
+                </div>
+                <form class="search-form" method="GET" action="{% url 'shop:product_search' %}">
+                    <input type="text" name="q" placeholder="Поиск товаров..." class="search-input">
+                    <button type="submit" class="search-button">🔍</button>
+                </form>
+            </div>
+
+            <!-- Основная навигация -->
+            <div class="header-content">
+                <div class="logo">
+                    <h1>MinimalWear</h1>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="{% url 'shop:home' %}">Главная</a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#">Доставка</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">О нас</a></li>
+                    </ul>
+                </nav>
+                <div class="header-icons">
+                    <a href="#" class="icon-link">Отследить заказ</a>
+                    <a href="#" class="icon-link">Корзина</a>
+                </div>
+            </div>
+        </div>
+    </header>
+<!-- Основной контент -->
+{% block content %}
+{% endblock content %}
+<!-- Подвал -->
+<footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MinimalWear</h3>
+                    <p>Элегантность в простоте</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Магазин</h4>
+                    <ul>
+                        <li><a href="#">Женская одежда</a></li>
+                        <li><a href="#">Мужская одежда</a></li>
+                        <li><a href="#">Аксессуары</a></li>
+                        <li><a href="#">Новинки</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Помощь</h4>
+                    <ul>
+                        <li><a href="#">Доставка и возврат</a></li>
+                        <li><a href="#">Размеры</a></li>
+                        <li><a href="#">Уход за одеждой</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p>+7 (999) 123-45-67</p>
+                    <p>info@minimalwear.ru</p>
+                    <p>Москва, ул. Примерная, 15</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 MinimalWear. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

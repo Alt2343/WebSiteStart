@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <!-- Герой-секция для поиска -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>
+                    {% if query %}
+                        «{{ query }}»
+                    {% else %}
+                        Все товары
+                    {% endif %}
+                </h2>
+                <p>{{ products|length }} товаров найдено</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сетка товаров -->
+    <section class="products">
+        <div class="container">
+            <div class="products-grid">
+                {% for product in products %}
+                    <div class="product-card">
+                        <div class="product-image">
+                            {% if product.main_image %}
+                            <img src="{{ product.main_image.url }}" alt="{{ product.name }}">
+                            {% endif %}
+                        </div>
+                        <div class="product-content">
+                            <h3>{{ product.name }}</h3>
+                            <p class="price">{{ product.price }}₽</p>
+                            <a href="{% url 'shop:product_detail' product.slug %}" class="btn-outline">
+                                В корзину
+                            </a>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="no-products" style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+                        {% if query %}
+                            <h3 style="font-size: 24px; margin-bottom: 15px; color: #666; font-weight: 500;">По запросу «{{ query }}» ничего не найдено</h3>
+                            <p style="color: #999; margin-bottom: 25px;">Попробуйте изменить поисковый запрос</p>
+                        {% else %}
+                            <h3 style="font-size: 24px; margin-bottom: 15px; color: #666; font-weight: 500;">Товары временно отсутствуют</h3>
+                            <p style="color: #999;">Загляните к нам позже</p>
+                        {% endif %}
+                        <a href="{% url 'shop:home' %}" class="btn" style="margin-top: 20px;">Вернуться на главную</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Навигация назад -->
+    <section style="padding: 50px 0; background: white; text-align: center;">
+        <div class="container">
+            <a href="{% url 'shop:home' %}" style="color: #333; text-decoration: none; font-size: 16px; font-weight: 500;">
+                ← Вернуться на главную
+            </a>
+        </div>
+    </section>
+</main>
+{% endblock content %}

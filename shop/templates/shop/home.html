@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<main>
+    <!-- Герой-секция -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Элегантность в простоте</h2>
+                <p>Откройте для себя нашу новую коллекцию минималистичной одежды</p>
+                <a href="/" class="btn">Смотреть коллекцию</a>
+            </div>
+        </div>
+    </section>
+<!-- Категории -->
+<section class="categories">
+    <div class="container">
+        <h2 class="section-title">Категории</h2>
+        <div class="categories-grid">
+            {% for category in categories %}
+            <a class="category-card"
+               hx-get="{% url 'shop:home' %}?category={{ category.slug }}"
+               hx-target=".products-grid"
+               hx-push-url="{% url 'shop:home' %}?category={{ category.slug }}">
+                {% if category.image %}
+                <div class="category-image">
+                    <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                </div>
+                {% endif %}
+                <h3>{{ category.name }}</h3>
+                <span class="category-link">Смотреть</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Популярные товары -->
+<section class="products">
+    <div class="container">
+        <h2 class="section-title">
+            {% if selected_category %}
+                {{ selected_category.name }}
+            {% else %}
+                Популярные товары
+            {% endif %}
+        </h2>
+
+        <div class="products-grid">
+            {% for product in featured_products %}
+                <div class="product-card">
+                    <div class="product-image">
+                        {% if product.main_image %}
+                        <img src="{{ product.main_image.url }}" alt="{{ product.name }}">
+                        {% endif %}
+                    </div>
+                    <div class="product-content">
+                        <h3>{{ product.name }}</h3>
+                        <p class="price">{{ product.price }}₽</p>
+                        <a href="{% url 'shop:product_detail' product.slug %}" class="btn-outline">
+                            В корзину
+                        </a>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="no-products">
+                    <p>Товары временно отсутствуют</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+        <!-- О нас -->
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>О MinimalWear</h2>
+                        <p>Мы создаем одежду, которая сочетает в себе простоту, качество и стиль. Наша философия - минимализм, который позволяет подчеркнуть индивидуальность без лишнего шума.</p>
+                        <p>Каждая вещь в нашей коллекции тщательно продумана и изготовлена из натуральных материалов высшего качества.</p>
+                        <a href="#" class="btn">Узнать больше</a>
+                    </div>
+                    <div class="about-image"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}
