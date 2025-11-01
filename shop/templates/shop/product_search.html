@@ -4,9 +4,9 @@
 {% block content %}
 <main>
     <!-- Герой-секция для поиска -->
-    <section class="hero">
+    <section class="hero2">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content-search">
                 <h2>
                     {% if query %}
                         «{{ query }}»
@@ -63,4 +63,19 @@
         </div>
     </section>
 </main>
+<style>
+    .hero2 {
+    padding: 1px 0;
+    background: #f8f8f8;
+    text-align: center;
+    }
+    .hero-content-search h2 {
+    font-size: 42px;
+    font-weight: 600;
+    }
+    .hero-content-search p {
+    font-size: 25px;
+    font-weight: 500;
+    }
+</style>
 {% endblock content %}

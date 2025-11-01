@@ -160,6 +160,7 @@
 }
 
 .btn-outline {
+    margin-bottom: 10px;
     background: transparent;
     color: #333;
 }

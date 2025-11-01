@@ -20,11 +20,22 @@ from django.db import models
 
 
 class Product(models.Model):
+    GENDER_CHOICES = [
+        ('men', 'Мужской'),
+        ('women', 'Женский'),
+        ('unisex', 'Унисекс'),
+        ('kids', 'Детский'),
+    ]
     # Основная информация
     name = models.CharField(max_length=200, verbose_name='Название')
     slug = models.SlugField(max_length=200, unique=True, verbose_name='URL')
+    brand = models.CharField(max_length=100, null=True, blank=True ,verbose_name="Бренд")
+    sku = models.CharField(max_length=50, unique=True,verbose_name="Артикул")
     main_image = models.ImageField(upload_to='products/main/%Y/%m/%d/',verbose_name='Главное фото',blank=True,null=True)
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default='unisex', verbose_name="Пол")
     description = models.TextField(blank=True, verbose_name='Описание')
+    material = models.CharField(max_length=200, verbose_name="Материал")
+    country_of_origin = models.CharField(max_length=100, blank=True, verbose_name="Страна производства")
     # Связь с категорией
     category = models.ForeignKey(Category,on_delete=models.CASCADE,related_name='products',verbose_name='Категория')
     # Цена и наличие

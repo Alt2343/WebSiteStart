@@ -57,10 +57,10 @@
                         {% endif %}
                     </div>
                     <div class="product-content">
-                        <h3>{{ product.name }}</h3>
-                        <p class="price">{{ product.price }}₽</p>
+                        <h3>{{ product.name|truncatechars:25 }}</h3>
+                        <p class="price">{{ product.price|floatformat:0 }} ₽</p>
                         <a href="{% url 'shop:product_detail' product.slug %}" class="btn-outline">
-                            В корзину
+                            Подробнее
                         </a>
                     </div>
                 </div>

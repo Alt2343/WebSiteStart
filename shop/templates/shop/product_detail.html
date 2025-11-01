@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <section class="products" style="padding: 40px 0; background: white;">
+        <div class="container">
+            <!-- Хлебные крошки -->
+            <div style="margin-bottom: 30px; font-size: 14px; color: #666;">
+                <a href="{% url 'shop:home' %}" style="color: #666; text-decoration: none;">Главная</a>
+                <span style="margin: 0 10px;">/</span>
+                <a href="{% url 'shop:home' %}?category={{ product.category.slug }}" style="color: #666; text-decoration: none;">{{ product.category.name }}</a>
+                <span style="margin: 0 10px;">/</span>
+                <span>{{ product.name }}</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 60px;">
+                <!-- Изображение -->
+                <div>
+                    <div style="width: 100%; aspect-ratio: 3/4; background: #f8f8f8; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        {% if product.main_image %}
+                        <img src="{{ product.main_image.url }}" alt="{{ product.name }}" style="width: 100%; height: 100%; object-fit: contain;">
+                        {% else %}
+                        <div style="color: #999;">Нет изображения</div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Информация -->
+                <div style="padding: 20px 0;">
+                    <!-- Бренд и артикул -->
+                    <div style="margin-bottom: 15px;">
+                        <span style="font-weight: 500; color: #333;">{{ product.brand }}</span>
+                        <span style="margin-left: 20px; color: #999;">Арт: {{ product.sku }}</span>
+                    </div>
+
+                    <!-- Название -->
+                    <h1 style="font-size: 32px; font-weight: 600; margin-bottom: 20px; color: #333;">{{ product.name }}</h1>
+
+                    <!-- Категория и пол -->
+                    <div style="display: block; gap: 10px; margin-bottom: 25px;">
+                        <span style="font-weight: 500; color: #666;">Пол:</span>
+                        <span style="padding: 10px 15px; background: #f8f8f8; border-radius: 4px; font-size: 14px; color: #666;">{{ product.get_gender_display }}</span>
+                    </div>
+
+                    <!-- Цена -->
+                    <div style="margin-bottom: 30px; padding-bottom: 25px; border-bottom: 1px solid #f0f0f0;">
+                        <span style="font-size: 32px; font-weight: 600; color: #333;">{{ product.price }}₽</span>
+                    </div>
+
+                    <!-- Кнопки -->
+                    <div style="display: flex; gap: 15px; margin-bottom: 40px;">
+                        <button class="btn" style="flex: 1;">Добавить в корзину</button>
+                    </div>
+
+                    <!-- Характеристики -->
+                    <div style="background: #f8f8f8; padding: 25px; border-radius: 8px;">
+                        <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 20px; color: #333;">Характеристики</h3>
+                        <div style="display: grid; gap: 12px;">
+                            <div style="display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid #e8e8e8;">
+                                <span style="font-weight: 500; color: #666;">Материал:</span>
+                                <span style="color: #333;">{{ product.material }}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid #e8e8e8;">
+                                <span style="font-weight: 500; color: #666;">Страна:</span>
+                                <span style="color: #333;">{{ product.country_of_origin }}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="font-weight: 500; color: #666;">Бренд:</span>
+                                <span style="color: #333;">{{ product.brand }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Описание -->
+            <div style="background: #f8f8f8; padding: 30px; border-radius: 8px; margin-bottom: 60px;">
+                <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 20px; color: #333;">Описание</h3>
+                <p style="line-height: 1.6; color: #666; margin: 0;">{{ product.description }}</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Похожие товары -->
+    <section class="products" style="padding: 70px 0; background: #f8f8f8;">
+        <div class="container">
+            <h2 class="section-title">Похожие товары</h2>
+            <div class="products-grid">
+                {% for related_product in related_products %}
+                <div class="product-card">
+                    <div class="product-image">
+                        {% if related_product.main_image %}
+                        <img src="{{ related_product.main_image.url }}" alt="{{ related_product.name }}">
+                        {% endif %}
+                    </div>
+                    <div class="product-content">
+                        <h3>{{ related_product.name }}</h3>
+                        <p class="price">{{ related_product.price }}₽</p>
+                        <a href="{% url 'shop:product_detail' related_product.slug %}" class="btn-outline">
+                            В корзину
+                        </a>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="no-products" style="grid-column: 1 / -1; text-align: center; padding: 40px 20px;">
+                    <p>Нет похожих товаров</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
