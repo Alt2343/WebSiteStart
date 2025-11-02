@@ -54,6 +54,8 @@
                     <div class="product-image">
                         {% if product.main_image %}
                         <img src="{{ product.main_image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                        <div style="color: #999;">Нет изображения</div>
                         {% endif %}
                     </div>
                     <div class="product-content">
@@ -72,7 +74,6 @@
         </div>
     </div>
 </section>
-
         <!-- О нас -->
         <section class="about">
             <div class="container">
@@ -88,5 +89,4 @@
             </div>
         </section>
     </main>
-
 {% endblock content %}
