@@ -38,7 +38,7 @@
                     </ul>
                 </nav>
                 <div class="header-icons">
-                    <a href="#" class="icon-link">Отследить заказ</a>
+                    <a href="{% url 'orders:order_lookup' %}" class="icon-link">Отследить заказ</a>
                     <a href="{% url 'cart:cart_detail' %}" class="icon-link" style="position: relative;">
                         🛒 Корзина
                         {% if cart and cart|length > 0 %}

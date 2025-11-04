@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="max-width: 500px; margin: 0 auto; padding: 20px;">
+    <h1 style="font-size: 24px; font-weight: 300; text-align: center; margin-bottom: 30px; letter-spacing: 1px;">ОФОРМЛЕНИЕ ЗАКАЗА</h1>
+
+    {% if cart %}
+    <div style="border: 1px solid #000; padding: 20px; margin-bottom: 25px;">
+        <h3 style="font-size: 16px; font-weight: 500; margin-top: 0; margin-bottom: 15px;">ВАШ ЗАКАЗ</h3>
+        <ul style="list-style: none; padding: 0; margin: 0 0 15px 0;">
+            {% for item in cart %}
+                <li style="padding: 8px 0; border-bottom: 1px solid #eee; font-size: 14px;">
+                    {{ item.product.name }} — {{ item.quantity }} × {{ item.price }}
+                </li>
+            {% endfor %}
+        </ul>
+        <p style="font-size: 16px; font-weight: 500; margin: 0; border-top: 1px solid #000; padding-top: 10px;">
+            ИТОГО: {{ cart.get_total_price }}
+        </p>
+    </div>
+    {% endif %}
+
+    <form method="post" style="border: 1px solid #000; padding: 25px;">
+        {% csrf_token %}
+
+        <div style="margin-bottom: 25px;">
+            <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 20px; text-transform: uppercase;">Контактные данные</h3>
+
+            <div style="margin-bottom: 15px;">
+                <input type="text" name="first_name" placeholder="Имя" required
+                       style="width: 100%; padding: 12px; border: 1px solid #000; background: transparent; font-size: 14px; outline: none;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <input type="text" name="last_name" placeholder="Фамилия" required
+                       style="width: 100%; padding: 12px; border: 1px solid #000; background: transparent; font-size: 14px; outline: none;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <input type="tel" name="phone" placeholder="Телефон" required
+                       style="width: 100%; padding: 12px; border: 1px solid #000; background: transparent; font-size: 14px; outline: none;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <input type="email" name="email" placeholder="Email"
+                       style="width: 100%; padding: 12px; border: 1px solid #000; background: transparent; font-size: 14px; outline: none;">
+            </div>
+        </div>
+
+        <div style="margin-bottom: 25px;">
+            <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 15px; text-transform: uppercase;">Способ получения</h3>
+
+            <div style="display: flex; gap: 20px;">
+                <label style="display: flex; align-items: center; font-size: 14px;">
+                    <input type="radio" name="delivery_method" value="delivery" checked
+                           style="margin-right: 8px;">
+                    Доставка
+                </label>
+                <label style="display: flex; align-items: center; font-size: 14px;">
+                    <input type="radio" name="delivery_method" value="pickup"
+                           style="margin-right: 8px;">
+                    Самовывоз
+                </label>
+            </div>
+        </div>
+
+        <div id="delivery-fields" style="margin-bottom: 25px;">
+            <div style="margin-bottom: 15px;">
+                <input type="text" name="city" placeholder="Город"
+                       style="width: 100%; padding: 12px; border: 1px solid #000; background: transparent; font-size: 14px; outline: none;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <input type="text" name="address" placeholder="Адрес доставки"
+                       style="width: 100%; padding: 12px; border: 1px solid #000; background: transparent; font-size: 14px; outline: none;">
+            </div>
+        </div>
+
+        <button type="submit"
+                style="width: 100%; padding: 15px; background: #000; color: #fff; border: 1px solid #000; font-size: 14px; font-weight: 500; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">
+            Подтвердить заказ
+        </button>
+    </form>
+</div>
+
+<script>
+    document.querySelectorAll('input[name="delivery_method"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            document.getElementById('delivery-fields').style.display =
+                this.value === 'delivery' ? 'block' : 'none';
+        });
+    });
+</script>
+{% endblock %}

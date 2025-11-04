@@ -32,6 +32,8 @@ class Product(models.Model):
     brand = models.CharField(max_length=100, null=True, blank=True ,verbose_name="Бренд")
     sku = models.CharField(max_length=50, unique=True,verbose_name="Артикул")
     main_image = models.ImageField(upload_to='products/main/%Y/%m/%d/',verbose_name='Главное фото',blank=True,null=True)
+    size = models.CharField(max_length=10, verbose_name='Размер', blank=True, null=True)
+    color = models.CharField(max_length=10, verbose_name='Цвет', blank=True, null=True)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default='unisex', verbose_name="Пол")
     description = models.TextField(blank=True, verbose_name='Описание')
     material = models.CharField(max_length=200, verbose_name="Материал")

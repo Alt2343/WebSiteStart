@@ -29,7 +29,9 @@
                         {% endif %}
                         <!-- Product Details -->
                         <div>
-                            <h3 style="margin-bottom: 0.5rem; color: #2c3e50; font-size: 1.2rem;">{{ product.name }}</h3>
+                            <a style="margin-bottom: 0.5rem; color: #2c3e50; font-size: 1.2rem; text-decoration: none;" href="{% url 'shop:product_detail' product.slug %}" >
+                                <h3 style="margin-bottom: 0.5rem; color: #2c3e50; font-size: 1.2rem;">{{ product.name }}</h3>
+                            </a>
                             <div style="color: #7f8c8d; font-size: 0.9rem;">
                                 <div>Бренд: {{ product.brand }}</div>
                                 <div>Цена за шт: {{ product.price }} ₽</div>
@@ -94,7 +96,7 @@
                         <span>{{ cart.get_total_price }} ₽</span>
                     </div>
 
-                    <a href="/order/checkout/"
+                    <a href="{% url 'orders:order_create' %}"
                        style="display: block; width: 100%; padding: 15px; background: #27ae60; color: white; text-decoration: none; border-radius: 5px; cursor: pointer; font-size: 1.1rem; margin-top: 1rem; text-align: center;">Оформить заказ</a>
 
                     <div style="text-align: center; margin-top: 2rem;">

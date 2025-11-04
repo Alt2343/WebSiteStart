@@ -19,7 +19,7 @@
                 <div>
                     <div style="width: 100%; aspect-ratio: 3/4; background: #f8f8f8; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
                         {% if product.main_image %}
-                        <img src="{{ product.main_image.url }}" alt="{{ product.name }}" style="width: 100%; height: 100%; object-fit: contain;">
+                        <img src="{{ product.main_image.url }}" alt="{{ product.name }}" style="width: 135%; height: 100%; object-fit: contain;">
                         {% else %}
                         <div style="color: #999;">Нет изображения</div>
                         {% endif %}
@@ -72,6 +72,14 @@
                             <div style="display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid #e8e8e8;">
                                 <span style="font-weight: 500; color: #666;">Материал:</span>
                                 <span style="color: #333;">{{ product.material }}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid #e8e8e8;">
+                                <span style="font-weight: 500; color: #666;">Размер:</span>
+                                <span style="color: #333;">{{ product.size }}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid #e8e8e8;">
+                                <span style="font-weight: 500; color: #666;">Цвет:</span>
+                                <span style="color: #333;">{{ product.color }}</span>
                             </div>
                             <div style="display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid #e8e8e8;">
                                 <span style="font-weight: 500; color: #666;">Страна:</span>

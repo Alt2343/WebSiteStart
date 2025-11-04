@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="max-width: 500px; margin: 50px auto; padding: 20px; text-align: center;">
+    <div style="border: 1px solid #000; padding: 40px;">
+        <h1 style="font-size: 20px; font-weight: 500; margin-bottom: 20px; text-transform: uppercase;">Заказ принят</h1>
+
+        <div style="border: 1px solid #000; padding: 20px; margin: 25px 0;">
+            <p style="font-size: 16px; margin: 10px 0;">
+                Номер заказа
+            </p>
+            <p style="font-size: 24px; font-weight: 500; margin: 10px 0;">
+                {{ order.order_number }}
+            </p>
+        </div>
+
+        <p style="font-size: 14px; margin-bottom: 25px; line-height: 1.5;">
+            В ближайшее время с вами свяжется наш менеджер для подтверждения заказа.
+        </p>
+
+        <div style="border: 1px solid #000; padding: 15px; margin-bottom: 25px;">
+            <p style="margin: 0; font-size: 12px; font-weight: 500;">
+                Сохраните номер заказа: {{ order.order_number }}
+            </p>
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: center;">
+            <a href="{% url 'orders:order_lookup' %}"
+               style="display: inline-block; padding: 12px 20px; border: 1px solid #000; color: #000; text-decoration: none; font-size: 12px; font-weight: 500; text-transform: uppercase;">
+                Отследить заказ
+            </a>
+            <a href="/"
+               style="display: inline-block; padding: 12px 20px; background: #000; color: #fff; text-decoration: none; font-size: 12px; font-weight: 500; text-transform: uppercase;">
+                На главную
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
