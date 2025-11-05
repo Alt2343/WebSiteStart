@@ -1,25 +1,26 @@
-import os
 from pathlib import Path
+from yookassa import Configuration
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-SECRET_KEY = 'django-insecure-=tcr1uyq_0rw*ef!7gseunuufgkiz3qw6k0i_+4wq1oqec%#&%'
-
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.yourdomain.com']
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'payment',
     'shop',
     'orders',
     'cart',
@@ -99,5 +100,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-YOOKASSA_SHOP_ID = 'your_shop_id'
-YOOKASSA_SECRET_KEY = 'your_secret_key'
+YOOKASSA_SHOP_ID = '1199953'
+YOOKASSA_SECRET_KEY = 'test_Arm-zptswLEXBx9ovMJGj1eZtyiVnMM5NWZr1QZ7AnM'

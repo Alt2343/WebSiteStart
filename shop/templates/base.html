@@ -31,10 +31,9 @@
                 <nav class="nav">
                     <ul>
                         <li><a href="{% url 'shop:home' %}">Главная</a></li>
-                        <li><a href="#"></a></li>
-                        <li><a href="#">Доставка</a></li>
-                        <li><a href="#">Контакты</a></li>
-                        <li><a href="#">О нас</a></li>
+                        <li><a href="{% url 'shop:delivery' %}">Доставка</a></li>
+                        <li><a href="{% url 'shop:contacts' %}">Контакты</a></li>
+                        <li><a href="{% url 'shop:about' %}">О нас</a></li>
                     </ul>
                 </nav>
                 <div class="header-icons">

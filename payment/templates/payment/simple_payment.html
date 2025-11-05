@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Оплата заказа</title>
+</head>
+<body>
+    <h1>Оплата заказа №{{ payment.order.id }}</h1>
+
+    <div style="border: 1px solid #ccc; padding: 20px; margin: 20px;">
+        <p><strong>Сумма:</strong> {{ payment.amount }} руб.</p>
+        <p><strong>Статус:</strong> {{ payment.status }}</p>
+        <p><strong>ID платежа:</strong> {{ payment.yookassa_payment_id }}</p>
+
+        <hr>
+
+        <p><strong>Shop ID:</strong> {{ shop_id }}</p>
+        <p><strong>Key:</strong> {{ key_preview }}</p>
+
+        <div style="margin-top: 20px;">
+            <a href="{{ payment.payment_url }}" style="background: #4CAF50; color: white; padding: 10px 20px; text-decoration: none;">
+                Перейти к оплате
+            </a>
+
+            <a href="{% url 'payment:payment_return' payment.order.id %}" style="background: #2196F3; color: white; padding: 10px 20px; text-decoration: none; margin-left: 10px;">
+                Тест успешной оплаты
+            </a>
+        </div>
+    </div>
+
+    <div style="background: #fff3cd; padding: 15px; border: 1px solid #ffeaa7;">
+        <strong>Внимание:</strong> Сейчас работает тестовый режим.
+        Для подключения реальных платежей нужно исправить ключи ЮKassa.
+    </div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="max-width: 800px; margin: 0 auto; padding: 40px 20px;">
+    <!-- Заголовок -->
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h1 style="font-size: 36px; font-weight: 300; letter-spacing: 3px; margin-bottom: 20px;">КОНТАКТЫ</h1>
+        <div style="width: 100px; height: 1px; background: #000; margin: 0 auto;"></div>
+    </div>
+
+    <!-- Основные контакты -->
+    <div style="border: 1px solid #000; padding: 30px; margin-bottom: 40px;">
+        <h2 style="font-size: 24px; font-weight: 500; margin-bottom: 25px; text-transform: uppercase;">Свяжитесь с нами</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div>
+                <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 15px;">ТЕЛЕФОНЫ</h3>
+                <div style="font-size: 14px; line-height: 1.8; color: #666;">
+                    <p>
+                        <strong>Заказы и консультации:</strong><br>
+                        +7 (999) 123-45-67<br>
+                        <em>ежедневно 9:00-21:00</em>
+                    </p>
+
+                    <p>
+                        <strong>Оптовые закупки:</strong><br>
+                        +7 (999) 765-43-21<br>
+                        <em>Пн-Пт 10:00-18:00</em>
+                    </p>
+
+                    <p>
+                        <strong>Служба поддержки:</strong><br>
+                        +7 (999) 111-22-33<br>
+                        <em>круглосуточно</em>
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 15px;">ЭЛЕКТРОННАЯ ПОЧТА</h3>
+                <div style="font-size: 14px; line-height: 1.8; color: #666;">
+                    <p>
+                        <strong>Общие вопросы:</strong><br>
+                        info@example.com
+                    </p>
+
+                    <p>
+                        <strong>Поддержка клиентов:</strong><br>
+                        support@example.com
+                    </p>
+
+                    <p>
+                        <strong>Оптовые заказы:</strong><br>
+                        wholesale@example.com
+                    </p>
+
+                    <p>
+                        <strong>Сотрудничество:</strong><br>
+                        partnership@example.com
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Адрес и режим работы -->
+    <div style="border: 1px solid #000; padding: 30px; margin-bottom: 40px;">
+        <h2 style="font-size: 24px; font-weight: 500; margin-bottom: 25px; text-transform: uppercase;">Адрес и режим работы</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div>
+                <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 15px;">НАШ ОФИС И ШОУРУМ</h3>
+                <div style="font-size: 14px; line-height: 1.6; color: #666;">
+                    <p>
+                        <strong>Адрес:</strong><br>
+                        г. Москва, ул. Примерная, д. 1<br>
+                        Бизнес-центр "Примерный"<br>
+                        3 этаж, офис 305
+                    </p>
+
+                    <p>
+                        <strong>Как добраться:</strong><br>
+                        • Метро "Примерная"<br>
+                        • 5 минут пешком от метро<br>
+                        • Парковка: 1 час бесплатно
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 15px;">РЕЖИМ РАБОТЫ</h3>
+                <div style="font-size: 14px; line-height: 1.6; color: #666;">
+                    <p>
+                        <strong>Офис и шоурум:</strong><br>
+                        Пн-Пт: 10:00-20:00<br>
+                        Сб-Вс: 11:00-18:00
+                    </p>
+
+                    <p>
+                        <strong>Телефонная поддержка:</strong><br>
+                        Пн-Вс: 9:00-21:00
+                    </p>
+
+                    <p>
+                        <strong>Онлайн-заказы:</strong><br>
+                        круглосуточно
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Социальные сети -->
+    <div style="border: 1px solid #000; padding: 30px;">
+        <h2 style="font-size: 24px; font-weight: 500; margin-bottom: 25px; text-transform: uppercase;">Мы в соцсетях</h2>
+
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;">
+            <div>
+                <div style="font-size: 24px; margin-bottom: 10px;">📷</div>
+                <p style="font-size: 12px; color: #666;">Instagram<br>@example_shop</p>
+            </div>
+
+            <div>
+                <div style="font-size: 24px; margin-bottom: 10px;">💬</div>
+                <p style="font-size: 12px; color: #666;">Telegram<br>@example_shop</p>
+            </div>
+
+            <div>
+                <div style="font-size: 24px; margin-bottom: 10px;">📘</div>
+                <p style="font-size: 12px; color: #666;">VK<br>vk.com/example</p>
+            </div>
+
+            <div>
+                <div style="font-size: 24px; margin-bottom: 10px;">🐦</div>
+                <p style="font-size: 12px; color: #666;">Twitter<br>@example_shop</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 25px;">
+            <p style="font-size: 12px; color: #666;">
+                Подписывайтесь на наши соцсети чтобы быть в курсе новинок и акций
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

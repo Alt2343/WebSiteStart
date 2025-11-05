@@ -88,7 +88,7 @@
             <span>{{ cart.get_total_price }} ₽</span>
         </div>
 
-        <a href="/order/checkout/"
+        <a href="{% url 'orders:order_create' %}"
            style="display: block; width: 100%; padding: 15px; background: #27ae60; color: white; text-decoration: none; border-radius: 5px; cursor: pointer; font-size: 1.1rem; margin-top: 1rem; text-align: center;">Оформить заказ</a>
 
         <div style="text-align: center; margin-top: 2rem;">

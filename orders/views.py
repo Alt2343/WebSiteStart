@@ -34,10 +34,9 @@ def order_create(request):
         # Очищаем корзину
         cart.clear()
 
-        messages.success(request, f'Ваш заказ №{order.order_number} успешно создан!')
-        return redirect('orders:order_created', order_id=order.id)  # ← Добавьте 'orders:'
+        # Перенаправляем на создание платежа
+        return redirect('payment:create_payment', order_id=order.id)
 
-    # GET запрос - показываем форму
     return render(request, 'orders/order_create.html', {'cart': cart})
 
 

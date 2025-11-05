@@ -4,7 +4,6 @@ from django.db.models import Q
 from . import models
 from .models import Category, Product
 
-
 # Функция для главной страницы
 def home(request):
     categories = Category.objects.all()
@@ -108,3 +107,10 @@ def product_search(request):
         'query': query,
     }
     return render(request, 'shop/product_search.html', context)
+
+def about(request):
+    return render(request, 'shop/about.html')
+def delivery(request):
+    return render(request, 'shop/delivery.html')
+def contacts(request):
+    return render(request, 'shop/contacts.html')

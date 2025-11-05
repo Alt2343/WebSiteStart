@@ -82,9 +82,11 @@
                         <h2>О MinimalWear</h2>
                         <p>Мы создаем одежду, которая сочетает в себе простоту, качество и стиль. Наша философия - минимализм, который позволяет подчеркнуть индивидуальность без лишнего шума.</p>
                         <p>Каждая вещь в нашей коллекции тщательно продумана и изготовлена из натуральных материалов высшего качества.</p>
-                        <a href="#" class="btn">Узнать больше</a>
+                        <a href="{% url 'shop:about' %}" class="btn">Узнать больше</a>
                     </div>
-                    <div class="about-image"></div>
+                    <div class="about-image">
+                        <img style="width: 560px; height: 350px;" src="/static/images/noimg.jpg" alt="no">
+                    </div>
                 </div>
             </div>
         </section>
